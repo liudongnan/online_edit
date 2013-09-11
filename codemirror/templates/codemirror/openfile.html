@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+    <link href="/static/codemirror-3.16/lib/codemirror.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/codemirror-3.16/lib/codemirror.js"></script> 
+    <script type="text/javascript" src="/static/codemirror-3.16/mode/python/python.js"></script> 
+    <script type="text/javascript" src="/static/codemirror-3.16/mode/javascript/javascript.js"></script>
+    
+    <script type="text/javascript" src="/static/jqueryFileTree/jqueryFileTree.js"></script>
+    <link href="/static/jqueryFileTree/jqueryFileTree.css" rel="stylesheet">
+    
+    </head>
+<body>
+<input type="button" value="保存" onclick="save()"/></h1>
+<TextArea id="myTextarea" style="height:100%;width:100%;">
+{{con}}
+</TextArea>
+<script type="text/javascript">
+var mode = "";
+
+switch(window.location.href.split('.').slice(-1)[0]){
+    case 'py': mode='python';break;
+    case 'js': mode='javascript';break;
+}
+var editor = CodeMirror.fromTextArea($('#myTextarea')[0], {
+    mode: mode
+});
+editor.setSize('100%','100%');
+
+
+function save(){
+    var value = editor.getValue();
+    
+    $.post('http://www.boneyao.com/codemirror/savefile.html', {
+        'path':"{{path}}",'con':value
+    }, function(text){
+        alert(text);
+    });
+};
+</script>
+
+</body>
+</html>

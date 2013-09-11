@@ -1,0 +1,50 @@
+<html>
+<head>
+    <script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+    <link href="/static/codemirror-3.16/lib/codemirror.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/codemirror-3.16/lib/codemirror.js"></script> 
+    
+    <script type="text/javascript" src="/static/jqueryFileTree/jqueryFileTree.js"></script>
+    <link href="/static/jqueryFileTree/jqueryFileTree.css" rel="stylesheet">
+    
+    </head>
+<body>
+
+<h1>
+
+
+<p>My first paragraph.</p>
+
+<div id="file_tree_div_id" style="width: 20%;float: left;">
+</div>
+<iframe id="editor_iframe_id" src="" style="width: 70%;height:100%;"></iframe>
+<script type="text/javascript">
+ 
+$(document).ready( function() {
+    /* $.get('/codemirror/dirlist.html?dir=/home/boneyao/', function(html){
+        $('#file_tree_div_id').html(html);
+    });*/
+    
+    $(document).ready( function() {
+        $('#file_tree_div_id').fileTree({
+            root: '/home/boneyao/',
+            script: '/codemirror/dirlist.html?dir=/home/boneyao/',
+            expandSpeed: 1000,
+            collapseSpeed: 1000,
+            multiFolder: false
+        }, function(file) {
+           $('#editor_iframe_id').attr('src', "http://www.boneyao.com/codemirror/openfile.html?path="+file);
+    });
+});
+});
+
+   /*
+  var editor = CodeMirror.fromTextArea(myTextarea, {
+    mode: "text/html"
+  });*/
+
+
+</script>
+
+</body>
+</html>
