@@ -61,7 +61,7 @@ def dirlist(request):
    r=['<ul class="jqueryFileTree" style="display: none;">']
    try:
        r=['<ul class="jqueryFileTree" >']
-       d=urllib.unquote(request.POST.get('dir','c:\\temp'))
+       d=urllib.unquote(request.POST.get('dir','/home'))
        for f in os.listdir(d):
            ff=os.path.join(d,f)
            if os.path.isdir(ff):

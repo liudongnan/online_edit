@@ -27,13 +27,13 @@ $(document).ready( function() {
     
     $(document).ready( function() {
         $('#file_tree_div_id').fileTree({
-            root: '/home/boneyao/',
-            script: '/codemirror/dirlist.html?dir=/home/boneyao/',
+            root: '/home/coding/',
+            script: '/codemirror/dirlist.html?dir=/home/coding/',
             expandSpeed: 1000,
             collapseSpeed: 1000,
             multiFolder: false
         }, function(file) {
-           $('#editor_iframe_id').attr('src', "http://www.boneyao.com/codemirror/openfile.html?path="+file);
+           $('#editor_iframe_id').attr('src', "/codemirror/openfile.html?path="+file);
     });
 });
 });
