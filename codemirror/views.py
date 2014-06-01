@@ -9,7 +9,11 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
+
+
+@login_required
 def index(request):
     if not request.user.is_superuser:
        return HttpResponse(u"不要乱来")
