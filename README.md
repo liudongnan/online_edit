@@ -8,3 +8,4 @@ Step 2  vi coding/codemirror/templates/codemirror/index.html<Br/>
 Step 3 python manage.py runserver 0.0.0.0:8000 <Br/>
 
 
+other mode see http://codemirror.net/mode/
