@@ -13,18 +13,22 @@
     </head>
 <body>
 <input type="button" value="保存" onclick="save()"/></h1>
+<div style="height:90%;">
 <TextArea id="myTextarea" style="height:100%;width:100%;">
 {{con}}
 </TextArea>
+</div>
 <script type="text/javascript">
 var mode = "";
 
 switch(window.location.href.split('.').slice(-1)[0]){
     case 'py': mode='python';break;
     case 'js': mode='javascript';break;
+    case 'html': mode='htmlmixed';break;
 }
 var editor = CodeMirror.fromTextArea($('#myTextarea')[0], {
-    mode: mode
+    mode: mode,
+    lineNumbers:true
 });
 editor.setSize('100%','100%');
 
