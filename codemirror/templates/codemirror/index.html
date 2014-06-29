@@ -57,7 +57,15 @@ $(document).ready( function() {
        $("#tabs ul").append( '<li><a href="#tabs-'+length+'" title="">' + /.*\/(.*)/.exec(file)[1] +'</a></li>'  );
        $("#tabs #tabs_container").append( '<div id="tabs-'+ length  +'"><iframe src="/codemirror/openfile.html?path='+file+'" ></iframe></div>'  );
        $('#tabs a').unbind({});	    
-       $('#tabs').tabulous({ effect: 'slideLeft' });	    
+       $('#tabs').tabulous({ effect: 'slideLeft' });	
+       $('#tabs ul li a').last().click();    
+       $('#tabs ul li a').dblclick(function(){
+           var el = $(this),
+               like = el.attr('href');
+           el.remove();
+	   $(like).remove();
+           $('#tabs ul li a').last().click();    
+       });
        //$('#editor_iframe_id').attr('src', "/codemirror/openfile.html?path="+file);
     });
 });
