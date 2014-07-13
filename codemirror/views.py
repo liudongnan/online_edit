@@ -66,7 +66,9 @@ def dirlist(request):
    try:
        r=['<ul class="jqueryFileTree" >']
        d=urllib.unquote(request.POST.get('dir','/home'))
-       for f in os.listdir(d):
+       sortListResult = os.listdir(d)
+       sortListResult.sort(cmp=lambda a,b: cmp(a.find('.'), b.find('.')))
+       for f in sortListResult:
            ff=os.path.join(d,f)
            if os.path.isdir(ff):
                r.append('<li class="directory collapsed"><a href="#" rel="%s/">%s</a></li>' % (ff,f))
