@@ -9,13 +9,9 @@
     <script type="text/javascript" src="/static/codemirror-4.2/addon/hint/show-hint.js"></script>
     <script type="text/javascript" src="/static/codemirror-4.2/addon/hint/javascript-hint.js"></script>
     <script type="text/javascript" src="/static/codemirror-4.2/mode/javascript/javascript.js"></script>
-    
-    <script type="text/javascript" src="/static/jqueryFileTree/jqueryFileTree.js"></script>
-    <link href="/static/jqueryFileTree/jqueryFileTree.css" rel="stylesheet">
-    
-    </head>
+</head>
 <body>
-<input type="button" value="保存" onclick="save()"/></h1>
+<h1><input type="button" value="保存" onclick="save()"/></h1>
 <div style="height:90%;">
 <TextArea id="myTextarea" style="height:100%;width:100%;">
 {{con}}
@@ -24,11 +20,12 @@
 <script type="text/javascript">
 var mode = "";
 
-switch(window.location.href.split('.').slice(-1)[0]){
+switch("{{path}}".split('.').slice(-1)[0]){
     case 'py': mode='python';break;
     case 'js': mode='javascript';break;
     case 'html': mode='htmlmixed';break;
 }
+
 var editor = CodeMirror.fromTextArea($('#myTextarea')[0], {
     mode: {name:mode,globalVars:true},
     lineNumbers:true,
@@ -36,11 +33,7 @@ var editor = CodeMirror.fromTextArea($('#myTextarea')[0], {
     //extraKeys: {"Ctrl-Space": "autocomplete"}
 });
 
-/*
-CodeMirror.commands.autocomplete = function(cm) {
-        CodeMirror.simpleHint(cm, CodeMirror.javascriptHint);
-}
-*/
+
 
 editor.on("keyup", function(a,b,c){
     if(b.keyCode>65 && b.keyCode< 90)
